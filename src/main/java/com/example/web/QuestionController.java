@@ -39,11 +39,11 @@ public class QuestionController {
 		
 		return "index";
 	}
-	@GetMapping("/qna/form")
+/*	@GetMapping("/qna/form")
 	public String quest(Model model){
 		model.addAttribute("questions",questions);
 		
 		return "/qna/form";
-	}
+	}*/
 	
 }
