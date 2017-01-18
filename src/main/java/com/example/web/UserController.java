@@ -25,8 +25,8 @@ public class UserController {
 		//User user = new User(userId,password,name,email);
 		users.add(user);
 		for (User user1 : users) {
-			log.debug(""+user1);
-			log.info(""+user1);
+			//log.debug(""+user1);
+			//log.info(""+user1);
 		}
 		
 		return "redirect:/user/list2";
