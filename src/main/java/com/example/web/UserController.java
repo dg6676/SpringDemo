@@ -36,7 +36,7 @@ public class UserController {
 		System.out.println("fffffffffffff");
 		model.addAttribute("users",users);
 		
-		return "/user/list"; //가져올 html 파일
+		return "user/list"; //가져올 html 파일
 	}
 /*	@GetMapping("/form") //접근할 url
 	public String list2(Model model){
