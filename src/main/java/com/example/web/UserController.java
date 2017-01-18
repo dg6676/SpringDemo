@@ -33,6 +33,7 @@ public class UserController {
 	}
 	@GetMapping("/list") //접근할 url
 	public String list(Model model){
+		System.out.println("fffffffffffff");
 		model.addAttribute("users",users);
 		
 		return "/user/list"; //가져올 html 파일
