@@ -29,15 +29,19 @@ public class UserController {
 			//log.info(""+user1);
 		}
 		
-		return "redirect:/user/list2";
+		return "redirect:/user/list";
 	}
-	@GetMapping("/list2") //접근할 url
+	@GetMapping("/list") //접근할 url
 	public String list(Model model){
 		model.addAttribute("users",users);
 		
 		return "/user/list"; //가져올 html 파일
 	}
-	
-	
+	@GetMapping("/form") //접근할 url
+	public String list2(Model model){
+		model.addAttribute("users",users);
+		
+		return "/user/form"; //가져올 html 파일
+	}
 	
 }

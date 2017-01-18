@@ -15,4 +15,5 @@ public class HelloController {
 		
 		return "hello"; //template folder의 hello.html을 의미함. 컨벤션이 알아서 인식
 	}
+
 }

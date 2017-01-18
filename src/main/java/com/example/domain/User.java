@@ -1,7 +1,7 @@
 package com.example.domain;
 
 public class User {
-
+	//자바 빈
 	private String userId;
 	private String password;
 	private String name;
