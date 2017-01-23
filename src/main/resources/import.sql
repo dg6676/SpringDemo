@@ -1,0 +1,1 @@
+insert into user (id,user_id,password,name,email) values (1,'dg6676','12345','jeongyeon','123@naver');
