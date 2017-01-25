@@ -21,7 +21,7 @@ import com.example.domain.UserRepository;
 import com.example.utils.HttpSessionUtils;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	//private static final Logger log=LoggerFactory.getLogger(UserController.class);
 
@@ -31,6 +31,19 @@ public class UserController {
 	private UserRepository userRepository; 
 	
 	
+	@GetMapping("/list") //접근할 url
+	public String list(Model model){
+		//System.out.println("fffffffffffff");
+		//model.addAttribute("users",users);
+		model.addAttribute("users",userRepository.findAll());
+		
+		return "user/list"; //가져올 html 파일  //template 경로의 파일을 지정시,폴더 앞 슬래쉬를 제거해줘야한다. 
+	}
+	@GetMapping("/new") //접근할 url  
+	public String userform(Model model){
+		//model.addAttribute("users",users);	
+		return "/user/form"; //가져올 html 파일
+	}
 	@PostMapping("/checklogin")
 	public String login(String userId,String password,HttpSession session){
 		User user=userRepository.findByUserId(userId);//db에서 userId탐색 
@@ -41,13 +54,13 @@ public class UserController {
 	    	 }*/  //안좋은 코드. 객체지향적이지 못함
 		
 		if(user==null||!user.matchPassword(password))//로그인 실패
-			return "redirect:/user/login.html";
+			return "redirect:/users/login";
 		
 		 session.setAttribute("loginUser", user);
-	     return "redirect:/user/list";
+	     return "redirect:/";
 	}
 	
-	@PostMapping("/create")
+	@PostMapping("/")
 	public String create(User user){
 		userRepository.save(user);
 		//User user = new User(userId,password,name,email);
@@ -56,21 +69,10 @@ public class UserController {
 			//log.debug(""+user1);
 			//log.info(""+user1);
 		}*/
-		return "redirect:/user/list";
+		return "redirect:/users";
 	}
-	@GetMapping("/list") //접근할 url
-	public String list(Model model){
-		//System.out.println("fffffffffffff");
-		//model.addAttribute("users",users);
-		model.addAttribute("users",userRepository.findAll());
-		
-		return "user/list"; //가져올 html 파일  //template 경로의 파일을 지정시,폴더 앞 슬래쉬를 제거해줘야한다. 
-	}
-	@GetMapping("/form") //접근할 url  
-	public String list2(Model model){
-		//model.addAttribute("users",users);	
-		return "/user/form"; //가져올 html 파일
-	}
+
+	
 	
 	@GetMapping("/{id}/form")
 	public String updateForm(@PathVariable long id,Model model,HttpSession session){
@@ -124,6 +126,13 @@ public class UserController {
 			
 		return "redirect:/user/list";
 	}
-	
-	
+	@GetMapping("/{id}")
+	public String showdetail(){
+		return "";
+	}
+	@GetMapping("/login")
+	public String loginform(){
+		
+		return "user/login";
+	}
 }

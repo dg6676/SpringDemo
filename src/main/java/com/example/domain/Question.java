@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Question {
@@ -11,22 +12,26 @@ public class Question {
 	@Id @GeneratedValue
 	private long id;
 	
-	@Column(length=15,nullable=false,unique=true)
-	private String writer;
+	//@Column(length=15,nullable=false,unique=true)
+	//private String writer;
+	
+	@ManyToOne
+	private User writer;
+	
 	private String title;
 	private String contents;
 	
 	
 	public Question(){}
 
-	public Question(String writer, String title, String contents) {
+	public Question(User writer, String title, String contents) {
 		super();
 		this.writer = writer;
 		this.title = title;
 		this.contents = contents;
 	}
 
-	public void setWriter(String writer) {
+	public void setWriter(User writer) {
 		this.writer = writer;
 	}
 
@@ -42,7 +47,9 @@ public class Question {
 	public String toString() {
 		return "Question [writer=" + writer + ", title=" + title + ", contents=" + contents + "]";
 	}
-	
+	 public User getUser(){
+		 return this.writer;
+	 }
 	
 	
 }
