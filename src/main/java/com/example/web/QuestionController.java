@@ -67,13 +67,15 @@ public class QuestionController {
 		
 		return "/qna/show";
 	}
-	@GetMapping("/questions/{id}/form")
+	@GetMapping("/questions/{id}/form")  
 	public String questModify(@PathVariable long id,Model model,HttpSession session){
 		
 		User loginUser=HttpSessionUtils.getUserFromSession(session);
 		Question temp=questionRepository.findOne(id);
+		
 		if(temp.getUser().equals(loginUser)){
 			model.addAttribute("question",questionRepository.findOne(id));
+			
 			return "/qna/form";
 		}
 		
