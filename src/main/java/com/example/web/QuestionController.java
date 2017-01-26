@@ -68,7 +68,7 @@ public class QuestionController {
 		return "/qna/show";
 	}
 	@GetMapping("/questions/{id}/form")  
-	public String questModify(@PathVariable long id,Model model,HttpSession session){
+	public String questModify(@PathVariable long id,Model model,HttpSession session){ //hello world
 		
 		User loginUser=HttpSessionUtils.getUserFromSession(session);
 		Question temp=questionRepository.findOne(id);
